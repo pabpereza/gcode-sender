@@ -45,5 +45,5 @@ if(f):
         #os.remove('qr_codes/qr_'+str(qr_count)+'.jpg')
         print ("False")
     else:
-        print (codes)
+        print (codes[0])
         

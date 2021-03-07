@@ -48,8 +48,6 @@ for line in f:
         grbl_out = s.readline() # Wait for response with carriage return
         print ' : ' + grbl_out.strip()
  
-# Wait here until printing is finished to close serial port and file.
-raw_input("  Press <Enter> to exit.")
 
 # Close file and serial port
 f.close()
