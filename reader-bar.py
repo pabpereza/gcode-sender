@@ -59,5 +59,5 @@ while True:
                 ## if not a 2 then lookup the mapping
                 else:
                     ss += hid[ int(ord(c)) ]
-    print ss
-    print "test"
+    print( ss )
+    print( "test")
