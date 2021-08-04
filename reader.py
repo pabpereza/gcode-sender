@@ -18,9 +18,6 @@ def get_image():
     
 
 
-
-
-
 #print ('Taking picture..')
 try:
     f = 1
