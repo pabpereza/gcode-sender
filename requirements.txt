@@ -1,3 +1,4 @@
 picamera
 serial
 zbarlight
+pyqt5
