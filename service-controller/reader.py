@@ -11,8 +11,8 @@ GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(25, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
 
 # Services status
-GPIO.setup(5, GPIO.IN) 
-GPIO.setup(6, GPIO.IN)
+GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
+GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 try:
     while True:
