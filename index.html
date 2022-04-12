@@ -1,77 +1,99 @@
-<!-- Interface with 4 buttons in 2 columns. The buttons allow stop, start and restart the service -->
-<html>
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
-	<title>Encoladora panel de control</title>
-	<link rel="stylesheet" type="text/css" href="panel/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="panel/css/custom.css">
-	<script src="panel/js/bootstrap.bundle.js"></script>
-	<script src="panel/js/jquery-3.6.0.min.js"></script>
-	<script src="panel/js/positions_controller.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Encoladora</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="panel/v2/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="panel/v2/vendors/base/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="panel/v2/css/style.css">
 </head>
-
 <body>
-	<div class="container">
-		<div class="row text-center">
-			<div class="col-3">
-				<div id="boton" class="boton puesto1">
-					<div>Puesto 1</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-				<div id="boton" class="boton puesto2">
-					<div>Puesto 2</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-				<div id="boton" class="boton puesto3">
-					<div>Puesto 3</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-				<div id="boton" class="boton puesto4">
-					<div>Puesto 4</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-			</div>
-			<div class="col-3">
-				<div id="boton" class="boton puesto5">
-					<div>Puesto 5</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-				<div id="boton" class="boton puest6">
-					<div>Puesto 6</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-				<div id="boton" class="boton puesto7">
-					<div>Puesto 7</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-				<div id="boton" class="boton puesto8">
-					<div>Puesto 8</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-			</div>
-			<div class="col-3">
-				<div id="boton" class="boton puesto9">
-					<div>Puesto 9</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-				<div id="boton" class="boton puesto10">
-					<div>Puesto 10</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-				<div id="boton" class="boton puest11">
-					<div>Puesto 11</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-				<div id="boton" class="boton puesto12">
-					<div>Puesto 12</div>
-					<div class="ruta">Sin programa</div>
-				</div>
-			</div>
-			<div class="col-3">
-				<h1>Estado</h1>
-				<div </div>
-				</div>
-			</div>
+<div class="container-scroller">
+    <!-- partial -->
+    <div class="container-fluid">
+        <!-- partial:partials/_sidebar.html -->
+
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+
+                <div class="row">
+                    <div class="col-md-12 grid-margin">
+                        <div class="d-flex justify-content-between flex-wrap">
+                            <div class="d-flex align-items-end flex-wrap">
+                                <div class="me-md-3 me-xl-5">
+                                    <h2>Encoladora</h2>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-end flex-wrap">
+                                <button type="button" class="btn btn-light bg-white btn-icon me-3 d-none d-md-block "
+                                        onclick="toggleFullScreen()">
+                                    <i class="mdi mdi-crop-free text-muted"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4 stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between flex-wrap">
+                                    <div class="d-flex align-items-end flex-wrap vertical">
+                                        <div class="me-md-3 me-xl-5">
+                                            <h2 class="card-title mb-2 pt-3">Puesto 1</h2>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-end flex-wrap">
+                                        <button type="button" class="btn btn-success btn-status">
+                                        </button>
+                                    </div>
+                                </div>
+                                <br>
+                                <p class="m-0">Programa no cargado</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © Strike</span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+<!-- plugins:js -->
+<script src="panel/v2/vendors/base/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="panel/v2/js/off-canvas.js"></script>
+<script src="panel/v2/js/hoverable-collapse.js"></script>
+<script src="panel/v2/js/template.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="panel/v2/js/dashboard.js"></script>
+<!-- End custom js for this page-->
 </body>
 
 </html>
+
