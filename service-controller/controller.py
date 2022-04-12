@@ -38,4 +38,13 @@ def setPosition( position):
 			data[position-1]['active'] = True
 		
 		json_file.write(data)
-	
+
+def sendGCode( puesto ):
+
+	with open('positions.json') as json_file:
+		data = json.load(json_file)
+		if data[puesto-1]['active'] == True:
+			print("Enviando GCode")
+			os.system("python3 /home/pi/qr-lector/sendGCode.py " + str(data[puesto-1]['path']))
+		else:
+			print("Puesto no activo")

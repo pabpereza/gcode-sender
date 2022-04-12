@@ -17,7 +17,7 @@ GPIO.setup(6, GPIO.IN)
 try:
     while True:
         if GPIO.input(27):
-            print("Pin 27 activated - Bit 1")ç
+            print("Pin 27 activated - Bit 1")
         if GPIO.input(22):
             print("Pin 22 activated - Bit 2")
         if GPIO.input(23):
@@ -30,5 +30,6 @@ try:
             print("Pin 5 activated - Bit restart")
         if GPIO.input(6):
             print("Pin 6 activated - Bit stop")
+        sleep(0.5)
 finally:
     GPIO.cleanup()
