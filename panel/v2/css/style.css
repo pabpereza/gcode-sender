@@ -16046,7 +16046,7 @@ fieldset:disabled .btn {
 }
 
 .mt-3, .template-demo > .btn {
-  margin-top: 1rem !important;
+  margin-top: 0.8rem !important;
 }
 
 .mt-4 {
@@ -23189,5 +23189,5 @@ dl li {
 
 .btn-status{
   height: 100%;
-  min-width: 60px;
+  min-width: 70px;
 }
