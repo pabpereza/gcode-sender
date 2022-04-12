@@ -1,0 +1,10 @@
+[Service]
+ExecStart=/bin/bash main.sh
+WorkingDirectory=/home/pi/qr-lector-and-gcode-sender
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target

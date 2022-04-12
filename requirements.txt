@@ -1,4 +1,2 @@
-picamera
-serial
-zbarlight
-pyqt5
+flask
+flask-cors
