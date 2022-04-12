@@ -4,11 +4,11 @@ from time import sleep
 GPIO.setmode(GPIO.BCM)          # choose BCM or BOARD  
 
 # Pin control
-GPIO.setup(27, GPIO.IN) 
-GPIO.setup(22, GPIO.IN) 
-GPIO.setup(23, GPIO.IN) 
-GPIO.setup(24, GPIO.IN) 
-GPIO.setup(25, GPIO.IN) 
+GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
+GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
+GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
+GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
+GPIO.setup(25, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
 
 # Services status
 GPIO.setup(5, GPIO.IN) 
