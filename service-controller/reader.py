@@ -30,5 +30,6 @@ try:
             print("Pin 5 activated - Bit restart")
         if GPIO.input(6):
             print("Pin 6 activated - Bit stop")
+        sleep(0.5)
 finally:
     GPIO.cleanup()
