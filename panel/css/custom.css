@@ -1,0 +1,19 @@
+.boton {
+	background-color: #FFF;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+	color: #000;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 5px;
+	text-decoration: none;
+}
+
+.active {
+	background-color: green;
+}
+
+.boton:not(.active) {
+	background-color: red;
+}
