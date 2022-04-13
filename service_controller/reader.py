@@ -101,7 +101,9 @@ try:
             running_process = False
             print("Programa terminado, esperando al siguiente")
 
-        print("Programa en ejecucion, esperando")        
+        else:
+            print("Programa en ejecucion, esperando")        
+        
         sleep(2)
         print("---------------------------------------------")
 
