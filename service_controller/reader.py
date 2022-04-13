@@ -51,7 +51,7 @@ def programStatus():
 try:
     while True:
 
-        # Candado de programa en ejecución
+        # Candado de programa en ejecucion
         running_process = False
 
         # Comprobar si la seta esta pulsada o el pin auto están activos
