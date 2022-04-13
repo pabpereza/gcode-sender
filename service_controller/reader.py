@@ -95,7 +95,8 @@ try:
             print("Programa terminado, esperando al siguiente")
 
         print("Programa en ejecucion, esperando")        
-        sleep(0.5)
+        sleep(1)
+        print("---------------------------------------------")
 
 finally:
     GPIO.cleanup()
