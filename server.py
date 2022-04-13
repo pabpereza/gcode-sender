@@ -9,6 +9,8 @@ cors = CORS(app)
 
 # Sharing absolute path with the controller
 global_dir = os.path.dirname(__file__)
+global_dir = "/home/pi/qr-lector-and-gcode-sender" 
+
 controller.setGlobalDir(global_dir)
 
 @app.route('/')
