@@ -80,19 +80,21 @@ try:
 
                 # Activar bloqueo de la inyectora
                 GPIO.output(6, True)
+                running_process = True
 
                 # Enviar programa a puesto
                 sendProgram(index_position)
             else:
                 print("La inyectora esta en movimiento")
-                GPIO.output(6, False)
+
 
        # Comprobar si el programa ha finalizado y desbloquear la inyectora 
         elif programStatus():
             GPIO.output(6, False)
             running_process = False
             print("Programa terminado, esperando al siguiente")
-        
+
+        print("Programa en ejecución, esperando...")        
         sleep(0.5)
 
 finally:
