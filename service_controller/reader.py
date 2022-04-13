@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO           # import RPi.GPIO module  
 from time import sleep
 import os
+import serial
 
 
 ## PIN CONFIGURATION ##
