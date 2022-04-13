@@ -56,7 +56,7 @@ try:
         running_process = False
 
         # Comprobar si la seta esta pulsada o el pin auto estan activos
-        if GPIO.input(4) or GPIO.input(5):
+        if not GPIO.input(4) or not GPIO.input(5):
             finishProgram()
 
         # Comprobar si hay un programa en funcionamiento
