@@ -65,18 +65,20 @@ try:
             pin2 = GPIO.input(22)
             pin3 = GPIO.input(23)
             pin4 = GPIO.input(24)
-            pin5 = GPIO.input(25)
+            pin5 = GPIO.input(25) 
 
             # Obteniendo pines de control y traduciendo a puesto 
             bin_position = str(pin1) + str(pin2) + str(pin3) + str(pin4) + str(pin5)
-            print("Puesto en binario: " + bin_position)
-            index_position = translatePosition(bin_position)
+            
+            if not bin_position == "00000":
+                print("Puesto en binario: " + bin_position)
+                index_position = translatePosition(bin_position)
 
-            # Activar bloqueo de la inyectora
-            GPIO.output(6, True)
+                # Activar bloqueo de la inyectora
+                GPIO.output(6, True)
 
-            # Enviar programa a puesto
-            sendProgram(index_position)
+                # Enviar programa a puesto
+                sendProgram(index_position)
 
        # Comprobar si el programa ha finalizado y desbloquear la inyectora 
         elif programStatus():
