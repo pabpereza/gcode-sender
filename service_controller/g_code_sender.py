@@ -21,7 +21,7 @@ def sendGCode( path):
         s = Serial('/dev/ttyACM0',115200)
         print('Opening Serial Port')
     except:
-        return "Encoladora no conectada"
+        return "Encoladora no conectada \n"
 
     try:
         # Open g-code file
