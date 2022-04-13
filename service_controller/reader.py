@@ -70,6 +70,9 @@ try:
             # Obteniendo pines de control y traduciendo a puesto 
             bin_position = str(pin1) + str(pin2) + str(pin3) + str(pin4) + str(pin5)
             
+            # CASO DE PRUEBA
+            bin_position = "11000"
+
             if bin_position != "00000":
                 print("Puesto en binario: " + bin_position)
                 index_position = translatePosition(bin_position)
