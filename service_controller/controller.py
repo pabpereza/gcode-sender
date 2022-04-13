@@ -92,7 +92,7 @@ def sendGCode( puesto ):
 		sender.sendGCode( path )
 		return "OK"
 
-	return "The selected program its not active"
+	return "El programa seleccionado no esta activo\n"
 
 ## AUXILIAR FUNCTIONS ##
 ## -------------------- ##
