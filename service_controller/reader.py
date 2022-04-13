@@ -18,7 +18,7 @@ GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 # Lock out
 GPIO.setup(6, GPIO.OUT)
 # Seta
-GPIO.setup(4, GPIO.OUT, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(4, GPIO.IN , pull_up_down=GPIO.PUD_DOWN)
 
 ## PARSE BINARY POSITIONS ##
 ## -------------------------------------------------- ##
