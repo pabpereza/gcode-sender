@@ -54,7 +54,7 @@ try:
         # Candado de programa en ejecucion
         running_process = False
 
-        # Comprobar si la seta esta pulsada o el pin auto están activos
+        # Comprobar si la seta esta pulsada o el pin auto estan activos
         if GPIO.input(4) or GPIO.input(5):
             finishProgram()
 
