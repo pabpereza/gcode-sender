@@ -15,9 +15,15 @@ def sendGCode( path):
 
     # Open serial port
     #s = serial.Serial('/dev/ttyACM0',115200)
-    s = Serial('/dev/ttyACM0',115200)
-    print('Opening Serial Port')
-    
+    s = ""
+
+    try:
+        s = Serial('/dev/ttyACM0',115200)
+        print('Opening Serial Port')
+    except:
+        return "Encoladora no conectada"
+
+
     # Open g-code file
     f = open(args.file,'r');
     #f = open(args.file,'r');
