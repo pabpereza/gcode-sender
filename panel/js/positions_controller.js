@@ -14,10 +14,12 @@ function refresh_positions(){
 			path = position['path']
 			
 			if(active == true){
-				$('div.puesto'+index).addClass('active');
+				$('#btn_puesto_'+index).removeClass('btn-danger');
+				$('#btn_puesto_'+index).addClass('btn-success');
 			}else
 			{
-				$('div.puesto'+index).removeClass('active');
+				$('#btn_puesto_'+index).removeClass('btn-success');
+				$('#btn_puesto_'+index).addClass('btn-danger');
 			}
 		}
 		
@@ -27,10 +29,15 @@ function refresh_positions(){
 
 
 function change_active_position(position){
+	$.ajax(url + "positions", {
+		data: JSON.stringify({'position': position }),
+		method: "POST",
+		contentType: "application/json",
+		success: function(result) {
+			refresh_positions();
+		}
+	});
 
-	$.post( url + 'positions' , { 'position': position }, function(){}, 'json');
-
-	refresh_positions()
 }
 
 
@@ -39,12 +46,11 @@ function change_active_position(position){
 refresh_positions()
 
 // Add event listener to the buttons
-$('#boton').click(function(){
-	console.log('click');
-	position = $(this).attr('class').split(' ')[1];
-
-	change_active_position(position);
-	
+$('[id*="btn_puesto_"').click(function(){
+	change_active_position(this.id.split('_')[2]);
 });
+
+// Add event listener to the filepickers
+$("[id*='file_']").filepicker();
 
 
