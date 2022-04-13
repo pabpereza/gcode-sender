@@ -36,7 +36,7 @@ def finishProgram():
     exit(1)
 
 def translatePosition(bin_position):
-   index = position.index(bin_position) + 1
+   index = positions.index(bin_position) + 1
    return index
 
 def sendProgram(position):
