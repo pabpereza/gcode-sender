@@ -2,7 +2,7 @@
 """\
 Simple g-code streaming script
 """ 
-import serial
+from serial import Serial
 import time
 import argparse
 
@@ -15,7 +15,7 @@ def sendGCode( path):
 
     # Open serial port
     #s = serial.Serial('/dev/ttyACM0',115200)
-    s = serial.Serial('/dev/ttyACM0',115200)
+    s = Serial('/dev/ttyACM0',115200)
     print('Opening Serial Port')
     
     # Open g-code file
