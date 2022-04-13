@@ -37,8 +37,11 @@ def finishProgram():
     exit(1)
 
 def translatePosition(bin_position):
-   index = positions.index(bin_position) + 1
-   return index
+    try:
+        index = positions.index(bin_position) + 1
+        return index
+    except:
+        print("La posicion introducida no esta en la lista")
 
 def sendProgram(position):
     print("Enviando programa a puesto: " + str(position))
