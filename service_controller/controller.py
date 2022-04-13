@@ -89,8 +89,7 @@ def sendGCode( puesto ):
 	elif checkIfPositionIsActive(puesto):
 		path = searchPath(puesto)
 		print("Send GCode from: " + path + " to position: " + str(puesto))
-		sender.sendGCode( path )
-		return "OK"
+		return sender.sendGCode( path )
 
 	return "El puesto seleccionado no esta activo\n"
 
