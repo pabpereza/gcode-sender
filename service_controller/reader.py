@@ -70,7 +70,7 @@ try:
             # Obteniendo pines de control y traduciendo a puesto 
             bin_position = str(pin1) + str(pin2) + str(pin3) + str(pin4) + str(pin5)
             
-            if not bin_position == "00000":
+            if bin_position != "00000":
                 print("Puesto en binario: " + bin_position)
                 index_position = translatePosition(bin_position)
 
@@ -79,6 +79,9 @@ try:
 
                 # Enviar programa a puesto
                 sendProgram(index_position)
+            else:
+                print("La inyectora esta en movimiento")
+                GPIO.output(6, False)
 
        # Comprobar si el programa ha finalizado y desbloquear la inyectora 
         elif programStatus():
