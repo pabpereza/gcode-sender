@@ -53,6 +53,8 @@ def programStatus():
 def debug():
     if not GPIO.input(4):
         print("Se ha pulsado la seta")
+    else:
+        print("No se ha pulsado la seta")
     if not GPIO.input(5):
         print("Desactivado el modo auto")
 
