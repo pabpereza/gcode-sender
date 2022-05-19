@@ -76,12 +76,11 @@ try:
                 
                 pin1 = GPIO.input(27)
                 pin2 = GPIO.input(22)
-                pin3 = GPIO.input(23)
+                pin3 = GPIO.input(25)
                 pin4 = GPIO.input(24)
-                pin5 = GPIO.input(25) 
 
                 # Obteniendo pines de control y traduciendo a puesto 
-                bin_position = str(pin1) + str(pin2) + str(pin3) + str(pin4) + str(pin5)
+                bin_position = str(pin1) + str(pin2) + str(pin3) + str(pin4) 
                 
                 print("Puesto en binario: " + bin_position)
                 index_position = translatePosition(bin_position)
