@@ -77,6 +77,8 @@ try:
             pin3 = GPIO.input(25)
             pin4 = GPIO.input(24)
 
+            print(str(pin1) + str(pin2) + str(pin3) + str(pin4) )
+
             # Comprobar si hay un programa en funcionamiento
         #     if not running_process:
                 
