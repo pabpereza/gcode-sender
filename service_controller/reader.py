@@ -52,9 +52,9 @@ def programStatus():
     return False
 
 def debug():
-    if not GPIO.input(4):
-        print("Se ha pulsado la seta")
     if not GPIO.input(5):
+        print("Se ha pulsado la seta")
+    if not GPIO.input(6):
         print("Desactivado el modo auto")
 
 ## MAIN LOGIC PROCESS ##
@@ -66,7 +66,7 @@ try:
         running_process = False
 
         # Comprobar si la seta esta pulsada o el pin auto estan activos
-        if not GPIO.input(4) or not GPIO.input(5):
+        if not GPIO.input(5):
             debug()
             #finishProgram()
         else:
