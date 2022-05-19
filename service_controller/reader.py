@@ -9,7 +9,6 @@ GPIO.setmode(GPIO.BCM)          # choose BCM or BOARD
 # Pin control
 GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
 GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
-GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
 GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
 GPIO.setup(25, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) 
 
@@ -52,9 +51,9 @@ def programStatus():
     return False
 
 def debug():
-    if not GPIO.input(5):
+    if not GPIO.input(4):
         print("Se ha pulsado la seta")
-    if not GPIO.input(6):
+    if not GPIO.input(5):
         print("Desactivado el modo auto")
 
 ## MAIN LOGIC PROCESS ##
@@ -66,7 +65,7 @@ try:
         running_process = False
 
         # Comprobar si la seta esta pulsada o el pin auto estan activos
-        if not GPIO.input(5):
+        if not GPIO.input(4) or not GPIO.input(5):
             debug()
             #finishProgram()
         else:
