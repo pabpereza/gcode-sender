@@ -60,8 +60,9 @@ def getPaths():
 	Get all paths from paths.json
 	'''
 	# TODO: modify ./ , use global_dir
-	files = glob.glob('./service_controller/gcodes/**/*.gcode', recursive=True)
-	files = list(map(lambda x : x.replace('./service_controller/', ''), files))
+	base = global_dir + '/service_controller/'
+	files = glob.glob(base + 'gcodes/**/*.gcode', recursive=True)
+	files = list(map(lambda x : x.replace(base, ''), files))
 	return jsonify(files)
 
 def setPath(path):
