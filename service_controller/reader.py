@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO           # import RPi.GPIO module  
 from time import sleep
 import os
+import requests
 
 
 ## PIN CONFIGURATION ##
@@ -45,7 +46,7 @@ def translatePosition(bin_position):
 
 def sendProgram(position):
     print("Enviando programa a puesto: " + str(position))
-    os.system("curl -X GET http://localhost:8080/sendcode/" + str(position))
+    requests.get("http://localhost:8080/sendcode?puesto=" + str(position))
 
 def programStatus():
     return False
@@ -77,41 +78,39 @@ try:
             pin3 = GPIO.input(25)
             pin4 = GPIO.input(24)
 
-            print(str(pin1) + str(pin2) + str(pin3) + str(pin4) )
-
             # Comprobar si hay un programa en funcionamiento
-        #     if not running_process:
+            if not running_process:
                 
-        #         pin1 = GPIO.input(27)
-        #         pin2 = GPIO.input(22)
-        #         pin3 = GPIO.input(25)
-        #         pin4 = GPIO.input(24)
+                pin1 = GPIO.input(27)
+                pin2 = GPIO.input(22)
+                pin3 = GPIO.input(25)
+                pin4 = GPIO.input(24)
 
-        #         # Obteniendo pines de control y traduciendo a puesto 
-        #         bin_position = str(pin1) + str(pin2) + str(pin3) + str(pin4) 
+                # Obteniendo pines de control y traduciendo a puesto 
+                bin_position = str(pin1) + str(pin2) + str(pin3) + str(pin4) 
                 
-        #         print("Puesto en binario: " + bin_position)
-        #         index_position = translatePosition(bin_position)
+                print("Puesto en binario: " + bin_position)
+                index_position = translatePosition(bin_position)
 
-        #         if bin_position != "00000" and not index_position:
-        #                 # Activar bloqueo de la inyectora
-        #                 GPIO.output(6, True)
-        #                 running_process = True
+                if bin_position != "00000" and not index_position:
+                        # Activar bloqueo de la inyectora
+                        GPIO.output(6, True)
+                        running_process = True
 
-        #                 # Enviar programa a puesto
-        #                 sendProgram(index_position)
-        #         else:
-        #             print("La inyectora esta en movimiento")
+                        # Enviar programa a puesto
+                        sendProgram(index_position)
+                else:
+                    print("La inyectora esta en movimiento")
 
 
-        # # Comprobar si el programa ha finalizado y desbloquear la inyectora 
-        #     elif programStatus():
-        #         GPIO.output(6, False)
-        #         running_process = False
-        #         print("Programa terminado, esperando al siguiente")
+        # Comprobar si el programa ha finalizado y desbloquear la inyectora 
+            elif programStatus():
+                GPIO.output(6, False)
+                running_process = False
+                print("Programa terminado, esperando al siguiente")
 
-        #     else:
-        #         print("Programa en ejecucion, esperando")        
+            else:
+                print("Programa en ejecucion, esperando")        
         
         sleep(2)
         print("---------------------------------------------")

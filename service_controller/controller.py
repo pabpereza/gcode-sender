@@ -2,8 +2,10 @@
 import os
 import json
 from service_controller import g_code_sender as sender
+import glob
+from flask import jsonify
 
-global_dir = ''
+global_dir = '.'
 
 def setGlobalDir(direction):
 	global global_dir
@@ -42,11 +44,7 @@ def setPosition( position):
 	data = json.load(json_file)
 	json_file.close()
 
-
-	if data[position-1]['active'] == True:
-		data[position-1]['active'] = False
-	else:
-		data[position-1]['active'] = True
+	data[position-1]['active'] != data[position-1]['active'] !
 	
 	if not data == "":
 		json_file = open(global_dir+ '/service_controller/positions.json','w')
@@ -61,9 +59,10 @@ def getPaths():
 	'''
 	Get all paths from paths.json
 	'''
-	with open( global_dir + '/service_controller/paths.json') as json_file:
-		data = json.load(json_file)
-		return json.dumps(data)
+	# TODO: modify ./ , use global_dir
+	files = glob.glob('./service_controller/gcodes/**/*.gcode', recursive=True)
+	files = list(map(lambda x : x.replace('./service_controller/', ''), files))
+	return jsonify(files)
 
 def setPath(path):
 	data = ""
