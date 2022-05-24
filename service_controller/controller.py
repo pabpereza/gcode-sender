@@ -29,6 +29,13 @@ def status():
 	print("Status of gpio-lector service")
 	os.system("systemctl status gpio-lector") 
 
+def getPaths():
+	'''
+	Get all paths from paths.json
+	'''
+	with open( global_dir + '/service_controller/paths.json') as json_file:
+		data = json.load(json_file)
+		return json.dumps(data)
 
 def getPositions():
 	with open( global_dir + '/service_controller/positions.json') as json_file:

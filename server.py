@@ -56,5 +56,9 @@ def positions():
 	else:
 		return controller.getPositions()
 
+@app.route('/paths', methods=['GET'])
+def paths():
+	return controller.getPaths()
+
 if __name__ == '__main__':
 	app.run(host='127.0.0.1', port=8080, debug=True)
