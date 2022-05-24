@@ -3,7 +3,6 @@ import os
 import json
 from service_controller import g_code_sender as sender
 import glob
-from flask import jsonify
 
 global_dir = '.'
 
@@ -44,7 +43,23 @@ def setPosition( position):
 	data = json.load(json_file)
 	json_file.close()
 
-	data[position-1]['active'] != data[position-1]['active'] !
+	data[position-1]['active'] = !data[position-1]['active']
+	
+	if not data == "":
+		json_file = open(global_dir+ '/service_controller/positions.json','w')
+		json.dump(data, json_file)
+		json_file.close()
+		return "OK"
+
+	return "ERROR"
+
+def updatePositionPath(position, path):
+	data = ""
+	json_file = open(global_dir+ '/service_controller/positions.json')
+	data = json.load(json_file)
+	json_file.close()
+
+	data[position-1]['path'] = path
 	
 	if not data == "":
 		json_file = open(global_dir+ '/service_controller/positions.json','w')
@@ -63,7 +78,7 @@ def getPaths():
 	base = global_dir + '/service_controller/'
 	files = glob.glob(base + 'gcodes/**/*.gcode', recursive=True)
 	files = list(map(lambda x : x.replace(base, ''), files))
-	return jsonify(files)
+	return files
 
 def setPath(path):
 	data = ""

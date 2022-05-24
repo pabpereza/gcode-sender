@@ -58,7 +58,26 @@ def positions():
 
 @app.route('/paths', methods=['GET'])
 def paths():
-	return controller.getPaths()
+	'''
+	Get all paths
+	'''
+	return jsonify(controller.getPaths())
+
+@app.route('/position/path', methods=['UPDATE'])
+def positionpath():
+	'''
+	Update position path
+	'''
+	# Get data
+	data = request.get_json()
+	position = int(data['position'])
+	path = str(data['path'])
+
+	# Update postion path
+	msg = controller.updatePositionPath(position, path)
+
+	# Return message (Ok , ERROR)
+	return jsonify({'msg': msg})
 
 if __name__ == '__main__':
 	app.run(host='127.0.0.1', port=8080, debug=True)
