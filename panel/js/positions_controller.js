@@ -50,7 +50,10 @@ $('[id*="btn_puesto_"').click(function(){
 	change_active_position(this.id.split('_')[2]);
 });
 
-// Add event listener to the filepickers
-$("[id*='file_']").filepicker();
-
-
+// Add event listener to the change program buttons
+$('[id*="btn_program_"').click(function(){
+	let id_position = $( this ).data("position");
+	$('#modal_input_position').val(id_position);
+	$('#modal_span_position').text(id_position);
+	$('#myModal').modal('show');
+});
