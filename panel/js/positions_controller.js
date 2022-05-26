@@ -13,12 +13,13 @@ function refresh_positions() {
             active = position['active']
             path = position['path']
 
-            if (active == true) {
-                $('#btn_puesto_' + index).removeClass('btn-danger');
-                $('#btn_puesto_' + index).addClass('btn-success');
+            if (active) {
+                let btn_puesto = $('#btn_puesto_' + index);
+                btn_puesto.removeClass('btn-danger');
+                btn_puesto.addClass('btn-success');
             } else {
-                $('#btn_puesto_' + index).removeClass('btn-success');
-                $('#btn_puesto_' + index).addClass('btn-danger');
+                btn_puesto.removeClass('btn-success');
+                btn_puesto.addClass('btn-danger');
             }
         }
 
