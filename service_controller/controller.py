@@ -102,7 +102,7 @@ def sendGCode(puesto):
 
 
 ## AUXILIAR FUNCTIONS ##
-## -------------------- ##
+## ------------------ ##
 def searchPath(puesto):
     with open(global_dir + '/service_controller/positions.json') as json_file:
         data = json.load(json_file)
