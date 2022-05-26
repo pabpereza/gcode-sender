@@ -432,7 +432,7 @@
                             <div class="modal-body">
                                 <br><h5>Listado de programas para cargar en el puesto <span id="modal_span_position"></span></h5><br>
                                 <input type="text" id="modal_input_position" style="display:none;">
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" id="modal_select_program" aria-label="Default select example">
                                     <option selected>Selecciona el programa</option>
                                     <option value="1">gcode/Verano/example.gcodes</option>
                                     <option value="2">gcode/Verano/example2.gcodes</option>
@@ -440,7 +440,7 @@
                                   </select>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-success">Enviar</button>
+                                <button type="button" class="btn btn-success" id="modal_btn_send">Enviar</button>
                             </div>
                         </div>
                     </div>
