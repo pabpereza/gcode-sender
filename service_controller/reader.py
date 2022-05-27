@@ -115,8 +115,9 @@ try:
                         GPIO.output(6, True)
 
                         # Enviar programa a puesto
-                        sendProgram(index_position)
                         last_bin_position = bin_position
+                        sendProgram(index_position)
+                        print("GPIO End")
                         GPIO.output(6, False)
                         sleep(2)
 
