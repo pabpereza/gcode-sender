@@ -39,14 +39,14 @@ def finishProgram():
 
 def getPath(index_position):
     data = requests.get("http://localhost:8080/position/" + str(index_position))
-    path = data.get_json()["path"]
+    path = data.json()["path"]
     print("Ruta del programa: " + path)
     return path
 
 
 def isProgramActive(index_position):
     data = requests.get("http://localhost:8080/position/" + str(index_position))
-    active = data.get_json()["active"]
+    active = data.json()["active"]
     print("Estado del puesto: " + str(active))
     return active
 
