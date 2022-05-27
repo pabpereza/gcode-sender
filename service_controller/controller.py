@@ -2,6 +2,7 @@
 import os
 import json
 import logging
+from time import sleep
 import glob
 
 global_dir = '.'
@@ -10,6 +11,7 @@ service_name = "gpio-lector"
 
 logging.basicConfig(filename='app.log', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logging.warning('This will get logged to a file')
+
 
 def setGlobalDir(direction):
     global global_dir
@@ -27,21 +29,34 @@ def stop():
     sleep(2)
     return status()
 
+
 def restart():
     print("Restarting " + service_name + " service")
-    os.system("systemctl restart " + service_name )
+    os.system("systemctl restart " + service_name)
     sleep(3)
     return status()
 
+
 def status():
     print("Status of " + service_name + " service")
-    status = os.system("systemctl is-active " + service_name )
-    if status.strip() == "active":
+    status = os.system("systemctl is-active " + service_name)
+    if str(status).strip() == "active":
         return True
     else:
-        error_log = os.system("systemctl status " + service_name )
+        error_log = os.system("systemctl status " + service_name)
         logging.error(error_log)
         return False
+
+
+def getPosition(position):
+    with open(global_dir + '/service_controller/positions.json') as json_file:
+        data = json.load(json_file)
+        pos = {}
+
+        for d in data:
+            if d['position'] == int(position):
+                pos = d
+        return pos
 
 
 def getPositions():

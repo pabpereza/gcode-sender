@@ -28,20 +28,20 @@ def start():
 
 @app.route('/stop')
 def stop():
-	# Stop the server
-	return jsonify({'msg': controller.stop() })
+    # Stop the server
+    return jsonify({'msg': controller.stop()})
+
 
 @app.route('/restart')
 def restart():
-	# Restart the server
-	return controller.restart()
-	return jsonify({'msg': controller.restart() })
+    # Restart the server
+    return jsonify({'msg': controller.restart()})
+
 
 @app.route('/status')
 def status():
-	# Return status of the server
-	return controller.status()
-	return jsonify({'msg': controller.status() })
+    # Return status of the server
+    return jsonify({'msg': controller.status()})
 
 
 @app.route('/getcodes/')
@@ -53,6 +53,11 @@ def getcode():
 def sendcode(puesto):
     # Send the code to the specified position
     return controller.sendGCode(puesto)
+
+
+@app.route('/position/<int:puesto>', methods=['GET'])
+def position(puesto):
+    return jsonify(controller.getPosition(puesto))
 
 
 @app.route('/positions', methods=['GET', 'POST'])
@@ -90,4 +95,4 @@ def positionpath():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=False, threaded=True)
+    app.run(host='127.0.0.1', port=8080, debug=True, threaded=True)
