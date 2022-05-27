@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO           # import RPi.GPIO module
 from time import sleep
 import os
 import requests
+from service_controller import g_code_sender as sender
 
 
 ## PIN CONFIGURATION ##
@@ -36,6 +37,11 @@ def finishProgram():
     #UNCOMMENTos.system("systemctl stop gpio-lector")
     exit(1)
 
+def getPath(index_position):
+    data = request.get("http://localhost:8080/position/" +str(index_position))
+    path = data.get_json()["path"]
+    return path
+
 def translatePosition(bin_position):
     try:
         index = positions.index(bin_position) + 1
@@ -44,9 +50,9 @@ def translatePosition(bin_position):
         print("La posicion introducida no esta en la lista")
         return False
 
-def sendProgram(position):
+def sendProgram(index_position):
     print("Enviando programa a puesto: " + str(position))
-    requests.get("http://localhost:8080/sendcode?puesto=" + str(position))
+    sender.sendGCode( getPath(index_position) )
 
 def programStatus():
     return False
@@ -64,13 +70,12 @@ def debug():
 try:
     while True:
 
-        # Candado de programa en ejecucion
-        running_process = False
+        last_bin_position = "0000"
 
         # Comprobar si la seta esta pulsada o el pin auto estan activos
         if not GPIO.input(4) or not GPIO.input(5):
             debug()
-            #finishProgram()
+            finishProgram()
         else:
 
             pin1 = GPIO.input(27)
@@ -78,40 +83,23 @@ try:
             pin3 = GPIO.input(25)
             pin4 = GPIO.input(24)
 
-            # Comprobar si hay un programa en funcionamiento
-            if not running_process:
-                
-                pin1 = GPIO.input(27)
-                pin2 = GPIO.input(22)
-                pin3 = GPIO.input(25)
-                pin4 = GPIO.input(24)
+            # Obteniendo pines de control y traduciendo a puesto 
+            bin_position = str(pin1) + str(pin2) + str(pin3) + str(pin4) 
+            
+            print("Puesto en binario: " + bin_position)
+            index_position = translatePosition(bin_position)
 
-                # Obteniendo pines de control y traduciendo a puesto 
-                bin_position = str(pin1) + str(pin2) + str(pin3) + str(pin4) 
-                
-                print("Puesto en binario: " + bin_position)
-                index_position = translatePosition(bin_position)
-
-                if bin_position != "00000" and not index_position:
-                        # Activar bloqueo de la inyectora
-                        GPIO.output(6, True)
-                        running_process = True
-
-                        # Enviar programa a puesto
-                        sendProgram(index_position)
-                else:
-                    print("La inyectora esta en movimiento")
+            if bin_position != "0000" and not index_position and bin_position != last_bin_position:
+                    # Activar bloqueo de la inyectora
+                    GPIO.output(6, True)
+                    
+                     # Enviar programa a puesto
+                    sendProgram(index_position)
+                    last_bin_position = bin_position 
+                    GPIO.output(6, False)
+                    sleep(2)
 
 
-        # Comprobar si el programa ha finalizado y desbloquear la inyectora 
-            elif programStatus():
-                GPIO.output(6, False)
-                running_process = False
-                print("Programa terminado, esperando al siguiente")
-
-            else:
-                print("Programa en ejecucion, esperando")        
-        
         sleep(2)
         print("---------------------------------------------")
 

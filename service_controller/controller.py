@@ -1,7 +1,6 @@
 #  Function to control gpio-lector service
 import os
 import json
-from service_controller import g_code_sender as sender
 import logging
 import glob
 
@@ -101,18 +100,6 @@ def getCodes():
 
     return "OK"
 
-
-def sendGCode(puesto):
-    if puesto == 0:
-        print("Send reset program")
-        return "RESET"
-    elif checkIfPositionIsActive(puesto):
-        path = searchPath(puesto)
-        print("Send GCode from: " + path + " to position: " + str(puesto))
-        locked = True
-        return sender.sendGCode(path)
-
-    return "El puesto seleccionado no esta activo\n"
 
 
 ## AUXILIAR FUNCTIONS ##
