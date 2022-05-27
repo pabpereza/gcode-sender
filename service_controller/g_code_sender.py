@@ -7,6 +7,7 @@ import logging
 from serial import Serial
 import time
 import argparse
+import sys
 
 logging.basicConfig(filename='service.log', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
@@ -64,3 +65,7 @@ def removeComment(string):
         return string
     else:
         return string[:string.index(';')]
+
+if __name__ == "__main__":
+
+    sendGCode(sys.args[1])
