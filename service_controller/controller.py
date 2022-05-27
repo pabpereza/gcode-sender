@@ -20,11 +20,13 @@ def seta():
 def stop():
     print("Stopping gpio-lector service")
     os.system("systemctl stop gpio-lector")
+    return 'OK'
 
 
 def restart():
     print("Restarting gpio-lector service")
     os.system("systemctl restart gpio-lector")
+    return 'OK'
 
 
 def status():
