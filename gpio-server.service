@@ -1,10 +1,10 @@
 [Service]
-ExecStart=/bin/bash main.sh
+ExecStart=python3 server.py
 WorkingDirectory=/home/pi/qr-lector-and-gcode-sender
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
-User=pi
+User=root
 
 [Install]
 WantedBy=multi-user.target
