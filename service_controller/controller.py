@@ -58,7 +58,7 @@ def getPosition(position):
         for d in data:
             if d['position'] == int(position):
                 pos = d
-        return json.dumps(pos)
+        return pos
 
 
 def getPositions():
