@@ -1,6 +1,6 @@
 [Service]
 ExecStart=python3 reader.py
-WorkingDirectory=/home/pi/qr-lector-and-gcode-sender
+WorkingDirectory=/home/pi/qr-lector-and-gcode-sender/service_controller
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
