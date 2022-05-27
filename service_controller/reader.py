@@ -81,7 +81,7 @@ def debug():
 ## MAIN LOGIC PROCESS ##
 ## -------------------------------------------------- ##
 last_bin_position = "0000"
-sendProgram("./gcodes/Homing.gcode")
+os.system("python g_code_sender.py ./gcodes/Homing.gcode")
 
 
 try:
