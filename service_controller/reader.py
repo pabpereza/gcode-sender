@@ -40,12 +40,14 @@ def finishProgram():
 def getPath(index_position):
     data = request.get("http://localhost:8080/position/" + str(index_position))
     path = data.get_json()["path"]
+    print("Ruta del programa: " + path)
     return path
 
 
 def isProgramActive(index_position):
     data = request.get("http://localhost:8080/position/" + str(index_position))
     active = data.get_json()["active"]
+    print("Estado del puesto: " + str(active))
     return active
 
 
@@ -99,9 +101,9 @@ try:
 
             print("Puesto en binario: " + bin_position)
             index_position = translatePosition(bin_position)
+            print("Puesto en decimal: " + str(index_position))
 
-            if bin_position != "0000" and not index_position and bin_position != last_bin_position and isProgramActive(
-                    index_position):
+            if bin_position != "0000" and not index_position and bin_position != last_bin_position and isProgramActive(index_position):
                 # Activar bloqueo de la inyectora
                 GPIO.output(6, True)
 
