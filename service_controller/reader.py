@@ -61,7 +61,7 @@ def translatePosition(bin_position):
 
 
 def sendProgram(index_position):
-    print("Enviando programa a puesto: " + str(position))
+    print("Enviando programa a puesto: " + str(index_position))
     sender.sendGCode(getPath(index_position))
 
 
@@ -100,24 +100,25 @@ try:
             bin_position = str(pin1) + str(pin2) + str(pin3) + str(pin4)
 
             print("Puesto en binario: " + bin_position)
-            index_position = translatePosition(bin_position)
-            print("Puesto en decimal: " + str(index_position))
+            if bin_position != "0000":
+                index_position = translatePosition(bin_position)
+                print("Puesto en decimal: " + str(index_position))
 
-            print( bin_position != "0000")
-            print(bin_position != last_bin_position)
-            print(isProgramActive(index_position))
+                print( bin_position != "0000")
+                print(bin_position != last_bin_position)
+                print(isProgramActive(index_position))
 
-            if bin_position != "0000" and bin_position != last_bin_position:
-                if isProgramActive(index_position):
-                    print("GPIO Start")
-                    # Activar bloqueo de la inyectora
-                    GPIO.output(6, True)
+                if bin_position != last_bin_position:
+                    if isProgramActive(index_position):
+                        print("GPIO Start")
+                        # Activar bloqueo de la inyectora
+                        GPIO.output(6, True)
 
-                    # Enviar programa a puesto
-                    sendProgram(index_position)
-                    last_bin_position = bin_position
-                    GPIO.output(6, False)
-                    sleep(2)
+                        # Enviar programa a puesto
+                        sendProgram(index_position)
+                        last_bin_position = bin_position
+                        GPIO.output(6, False)
+                        sleep(2)
 
         sleep(2)
         print("---------------------------------------------")
