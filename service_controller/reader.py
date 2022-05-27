@@ -81,6 +81,9 @@ def debug():
 ## MAIN LOGIC PROCESS ##
 ## -------------------------------------------------- ##
 last_bin_position = "0000"
+sendProgram("./gcodes/Homing.gcode")
+
+
 try:
     while True:
 
