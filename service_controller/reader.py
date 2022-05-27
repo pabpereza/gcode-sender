@@ -108,15 +108,16 @@ try:
             print(bin_position != last_bin_position)
             print(isProgramActive(index_position))
 
-            if bin_position != "0000" and not index_position and bin_position != last_bin_position and isProgramActive(index_position):
-                # Activar bloqueo de la inyectora
-                GPIO.output(6, True)
+            if bin_position != "0000" and not index_position and bin_position != last_bin_position:
+                if isProgramActive(index_position):
+                    # Activar bloqueo de la inyectora
+                    GPIO.output(6, True)
 
-                # Enviar programa a puesto
-                sendProgram(index_position)
-                last_bin_position = bin_position
-                GPIO.output(6, False)
-                sleep(2)
+                    # Enviar programa a puesto
+                    sendProgram(index_position)
+                    last_bin_position = bin_position
+                    GPIO.output(6, False)
+                    sleep(2)
 
         sleep(2)
         print("---------------------------------------------")
