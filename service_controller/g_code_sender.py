@@ -68,4 +68,4 @@ def removeComment(string):
 
 if __name__ == "__main__":
 
-    sendGCode(sys.args[1])
+    sendGCode(sys.argv[1])
