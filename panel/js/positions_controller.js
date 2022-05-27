@@ -47,6 +47,20 @@ function change_active_position(position) {
 }
 
 
+function show_alert_danger() {
+    $('#alert_danger').addClass('show');
+    setTimeout(() => {
+        $('#alert_danger').removeClass('show');
+    }, 2000);
+}
+
+function show_alert_success() {
+    $('#alert_success').addClass('show');
+    setTimeout(() => {
+        $('#alert_success').removeClass('show');
+    }, 2000);
+}
+
 // MAIN
 // First refresh of the positions
 refresh_positions();
