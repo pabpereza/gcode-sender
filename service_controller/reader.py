@@ -104,12 +104,12 @@ try:
             print("Puesto en decimal: " + str(index_position))
 
             print( bin_position != "0000")
-            print(not index_position)
             print(bin_position != last_bin_position)
             print(isProgramActive(index_position))
 
-            if bin_position != "0000" and not index_position and bin_position != last_bin_position:
+            if bin_position != "0000" and bin_position != last_bin_position:
                 if isProgramActive(index_position):
+                    print("GPIO Start")
                     # Activar bloqueo de la inyectora
                     GPIO.output(6, True)
 
@@ -121,6 +121,7 @@ try:
 
         sleep(2)
         print("---------------------------------------------")
-
+except Exception as e:
+    print(e)
 finally:
     GPIO.cleanup()
