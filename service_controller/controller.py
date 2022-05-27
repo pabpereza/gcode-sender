@@ -6,6 +6,7 @@ import logging
 import glob
 
 global_dir = '.'
+locked = False
 service_name = "gpio-lector"
 
 logging.basicConfig(filename='app.log', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -37,7 +38,7 @@ def status():
     print("Status of " + service_name + " service")
     status = os.system("systemctl is-active " + service_name )
     if status.strip() == "active":
-	return True
+        return True
     else:
         error_log = os.system("systemctl status " + service_name )
         logging.error(error_log)
@@ -108,6 +109,7 @@ def sendGCode(puesto):
     elif checkIfPositionIsActive(puesto):
         path = searchPath(puesto)
         print("Send GCode from: " + path + " to position: " + str(puesto))
+        locked = True
         return sender.sendGCode(path)
 
     return "El puesto seleccionado no esta activo\n"
