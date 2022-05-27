@@ -12,9 +12,15 @@ function refresh_positions() {
             index = position['position']
             active = position['active']
             path = position['path']
+            let btn_puesto = $('#btn_puesto_' + index);
+            let puesto_program = $('#puesto_program_' + index);
 
+            if (path.length > 2) {
+                puesto_program.text(path);
+            } else {
+                puesto_program.text("Programa no cargado");
+            }
             if (active) {
-                let btn_puesto = $('#btn_puesto_' + index);
                 btn_puesto.removeClass('btn-danger');
                 btn_puesto.addClass('btn-success');
             } else {
@@ -90,11 +96,32 @@ $('[id*="modal_btn_send"]').click(function () {
 
     $.ajax(url + "position/path", {
         data: JSON.stringify({'position': position, 'path': path}),
-        method: "UPDATE",
+        method: "POST",
         contentType: "application/json",
         success: function (result) {
             console.log(result);
             refresh_positions();
+            $('#myModal').modal('hide');
+        }
+    });
+});
+
+$('#btn_start').click(function () {
+    $.ajax(url + "restart", {
+        method: "GET",
+        contentType: "application/json",
+        success: function (result) {
+            console.log(result);
+        }
+    });
+});
+
+$('#btn_stop').click(function () {
+    $.ajax(url + "stop", {
+        method: "GET",
+        contentType: "application/json",
+        success: function (result) {
+            console.log(result);
         }
     });
 });
