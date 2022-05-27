@@ -80,10 +80,10 @@ def debug():
 
 ## MAIN LOGIC PROCESS ##
 ## -------------------------------------------------- ##
+last_bin_position = "0000"
 try:
     while True:
 
-        last_bin_position = "0000"
 
         # Comprobar si la seta esta pulsada o el pin auto estan activos
         if not GPIO.input(4) or not GPIO.input(5):
