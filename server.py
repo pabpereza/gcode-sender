@@ -26,17 +26,19 @@ def start():
 @app.route('/stop')
 def stop():
 	# Stop the server
-	return controller.stop()
+	return jsonify({'msg': controller.stop() })
 
 @app.route('/restart')
 def restart():
 	# Restart the server
 	return controller.restart()
+	return jsonify({'msg': controller.restart() })
 
 @app.route('/status')
 def status():
 	# Return status of the server
 	return controller.status()
+	return jsonify({'msg': controller.status() })
 
 
 @app.route('/getcodes/')

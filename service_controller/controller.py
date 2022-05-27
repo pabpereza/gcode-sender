@@ -24,18 +24,20 @@ def seta():
 def stop():
     print("Stopping " + service_name + "service")
     os.system("systemctl stop gpio-lector")
-
+    sleep(2)
+    return status()
 
 def restart():
     print("Restarting " + service_name + " service")
     os.system("systemctl restart " + service_name )
-
+    sleep(3)
+    return status()
 
 def status():
     print("Status of " + service_name + " service")
     status = os.system("systemctl is-active " + service_name )
     if status.strip() == "active":
-        return True
+	return True
     else:
         error_log = os.system("systemctl status " + service_name )
         logging.error(error_log)
