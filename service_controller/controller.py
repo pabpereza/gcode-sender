@@ -2,10 +2,14 @@
 import os
 import json
 from service_controller import g_code_sender as sender
+import logging
 import glob
 
 global_dir = '.'
+service_name = "gpio-lector"
 
+logging.basicConfig(filename='app.log', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.warning('This will get logged to a file')
 
 def setGlobalDir(direction):
     global global_dir
@@ -18,18 +22,24 @@ def seta():
 
 
 def stop():
-    print("Stopping gpio-lector service")
+    print("Stopping " + service_name + "service")
     os.system("systemctl stop gpio-lector")
 
 
 def restart():
-    print("Restarting gpio-lector service")
-    os.system("systemctl restart gpio-lector")
+    print("Restarting " + service_name + " service")
+    os.system("systemctl restart " + service_name )
 
 
 def status():
-    print("Status of gpio-lector service")
-    os.system("systemctl status gpio-lector")
+    print("Status of " + service_name + " service")
+    status = os.system("systemctl is-active " + service_name )
+    if status.strip() == "active":
+        return True
+    else:
+        error_log = os.system("systemctl status " + service_name )
+        logging.error(error_log)
+        return False
 
 
 def getPositions():
