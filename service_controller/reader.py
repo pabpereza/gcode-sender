@@ -103,6 +103,11 @@ try:
             index_position = translatePosition(bin_position)
             print("Puesto en decimal: " + str(index_position))
 
+            print( bin_position != "0000")
+            print(not index_position)
+            print(bin_position != last_bin_position)
+            print(isProgramActive(index_position))
+
             if bin_position != "0000" and not index_position and bin_position != last_bin_position and isProgramActive(index_position):
                 # Activar bloqueo de la inyectora
                 GPIO.output(6, True)
