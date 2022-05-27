@@ -62,7 +62,7 @@ def translatePosition(bin_position):
 
 def sendProgram(index_position):
     print("Enviando programa a puesto: " + str(index_position))
-    sender.sendGCode(getPath(index_position))
+    sender.sendGCode("./"+getPath(index_position))
 
 
 def programStatus():
