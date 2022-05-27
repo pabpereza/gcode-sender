@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO  # import RPi.GPIO module
 from time import sleep
 import os
 import requests
-from service_controller import g_code_sender as sender
+import g_code_sender as sender
 
 ## PIN CONFIGURATION ##
 ## -------------------------------------------------- ##
