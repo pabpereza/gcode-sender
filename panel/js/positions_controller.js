@@ -71,7 +71,8 @@ function generate_file_manager(paths) {
         breadcrumbs: true,
         onOpen: function (obj, file, folder, type) {
             if (type == 'file') {
-                alert("Open file: " + folder + '/' + file);
+                send_modal(folder + '/' + file);
+                //alert("Open file: " + folder + '/' + file);
             }
             path_modal_explorer = folder;
         }
@@ -137,46 +138,6 @@ $.ajax(url + "paths", {
     }
 });
 
-
-let paths = {
-
-    '/': [
-        {
-            name: 'AC-DC - The Very Best',
-            type: 'folder'
-        },
-        {
-            name: 'Metallica - Best of the best',
-            type: 'folder'
-        },
-        {
-            name: 'index.html',
-            type: 'html'
-        }
-    ],
-
-    '/AC-DC - The Very Best': [
-        {
-            name: '..',
-            type: 'folder'
-        },
-        {
-            name: '01 Hard As A Rock.mp3',
-            type: 'mp3'
-        },
-    ],
-
-    '/Metallica - Best of the best': [
-        {
-            name: '..',
-            type: 'folder'
-        },
-        {
-            name: 'Disc One',
-            type: 'folder'
-        },
-    ]
-}
 // END PROGRAMS
 
 // EVENTS
@@ -208,10 +169,10 @@ $('[id*="btn_program_"]').click(function () {
     $('#myModal').modal('show');
 });
 
-$('[id*="modal_btn_send"]').click(function () {
+function send_modal(path) {
     // Update and refresh
     let position = $('#modal_input_position').val();
-    let path = $('#modal_select_program').val();
+    //let path = $('#modal_select_program').val();
 
     $.ajax(url + "position/path", {
         data: JSON.stringify({'position': position, 'path': path}),
@@ -223,7 +184,7 @@ $('[id*="modal_btn_send"]').click(function () {
             $('#myModal').modal('hide');
         }
     });
-});
+}
 
 $('#btn_start').click(function () {
     $.ajax(url + "restart", {
