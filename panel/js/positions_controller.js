@@ -61,20 +61,120 @@ function show_alert_success() {
     }, 2000);
 }
 
+function generate_file_manager(paths) {
+    $("#files").simpleFileBrowser({
+        json: paths,
+        path: '/gcodes',
+        view: 'icon',
+        select: false,
+        breadcrumbs: true,
+        onOpen: function (obj, file, folder, type) {
+            if (type == 'file') {
+                alert("Open file: " + folder + '/' + file);
+            }
+        }
+    });
+}
+
+
 // MAIN
 // First refresh of the positions
 refresh_positions();
 
 // PROGRAMS
-var gcode_programs = {};
+var gcode_programs = {
+    '/': [
+        {
+            name: 'gcodes',
+            type: 'folder'
+        }
+    ]
+};
 $.ajax(url + "paths", {
     method: "GET",
     contentType: "application/json",
     success: function (result) {
-        gcode_programs = result;
+        //gcode_programs = result;
+        result.forEach((path) => {
+            let parts = path.split('/');
+
+            // Add files
+            let file = parts.pop();
+            let path_without_file = "/" + parts.join("/");
+
+            if (!(path_without_file in gcode_programs)) {
+                gcode_programs[path_without_file] = [];
+            }
+            gcode_programs[path_without_file].push({
+                name: file,
+                type: 'gcode'
+            });
+
+            // Add dirs
+            let dir = parts.pop();
+            let path_without_file_and_dir = "/" + parts.join("/");
+
+            if (!(path_without_file_and_dir in gcode_programs)) {
+                gcode_programs[path_without_file_and_dir] = [];
+            }
+
+            let has_dir = false;
+            gcode_programs[path_without_file_and_dir].forEach((x) => {
+                if (x.name === dir) {
+                    has_dir = true;
+                }
+            });
+
+            if (!has_dir) {
+                gcode_programs[path_without_file_and_dir].push({
+                    name: dir,
+                    type: 'folder'
+                });
+            }
+        });
     }
 });
 
+
+let paths = {
+
+    '/': [
+        {
+            name: 'AC-DC - The Very Best',
+            type: 'folder'
+        },
+        {
+            name: 'Metallica - Best of the best',
+            type: 'folder'
+        },
+        {
+            name: 'index.html',
+            type: 'html'
+        }
+    ],
+
+    '/AC-DC - The Very Best': [
+        {
+            name: '..',
+            type: 'folder'
+        },
+        {
+            name: '01 Hard As A Rock.mp3',
+            type: 'mp3'
+        },
+    ],
+
+    '/Metallica - Best of the best': [
+        {
+            name: '..',
+            type: 'folder'
+        },
+        {
+            name: 'Disc One',
+            type: 'folder'
+        },
+    ]
+}
 // END PROGRAMS
 
 // EVENTS
@@ -87,10 +187,13 @@ $('[id*="btn_puesto_"]').click(function () {
 $('[id*="btn_program_"]').click(function () {
     let id_position = $(this).data("position");
     $('#modal_input_position').val(id_position);
-    $('#modal_span_position').text(id_position);
+    //$('#modal_span_position').text(id_position);
 
+    //
+    $('#modal_body_data').html('<div id="files"></div>');
+    generate_file_manager(gcode_programs);
     // Programs
-    let modal_select_program = $('#modal_select_program');
+    /*let modal_select_program = $('#modal_select_program');
     modal_select_program.empty();
     modal_select_program.append(new Option('Selecciona el programa', ''));
 
@@ -99,7 +202,7 @@ $('[id*="btn_program_"]').click(function () {
             value: program,
             text: program
         }));
-    }
+    }*/
     $('#myModal').modal('show');
 });
 
@@ -139,3 +242,6 @@ $('#btn_stop').click(function () {
         }
     });
 });
+
+
+

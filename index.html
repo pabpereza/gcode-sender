@@ -12,6 +12,8 @@
     <!-- endinject -->
     <!-- inject:css -->
     <link rel="stylesheet" href="panel/v2/css/style.css">
+    <link rel="stylesheet" href="panel/v2/css/jquery.simplefilebrowser.css">
+    <link rel="stylesheet" href="panel/v2/vendors/fontawesome/css/all.min.css">
     <script src="panel/js/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -424,7 +426,7 @@
 
             </div>
 
-            <!-- Modal -->
+            <!-- Modal
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -442,6 +444,18 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" id="modal_btn_send">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <input type="text" id="modal_input_position" style="display:none;">
+                        <input type="text" id="modal_select_program" style="display:none;">
+                        <div class="modal-body" id="modal_body_data">
+                            <div id="files"></div>
                         </div>
                     </div>
                 </div>
@@ -507,5 +521,6 @@
 </body>
 
 <script src="panel/js/positions_controller.js"></script>
+<script src="panel/v2/js/jquery.simplefilebrowser.js"></script>
 
 </html>
