@@ -98,7 +98,7 @@
             return e
         }, _draw: function (b) {
             var c = this;
-            c.$elements.content.html(""), c.$element.removeClass("x32 x22 x16"), c.$element.addClass("x" + c.opts.size), c.$elements.content.removeClass("icon details"), c.$elements.content.addClass(c.opts.view), c.opts.breadcrumbs && (c.$elements.breadcrumbs.html(""), a.each(c.path, function (b, d) {
+            c.$elements.content.html(""), c.$element.removeClass("x42 x32 x22 x16"), c.$element.addClass("x" + c.opts.size), c.$elements.content.removeClass("icon details"), c.$elements.content.addClass(c.opts.view), c.opts.breadcrumbs && (c.$elements.breadcrumbs.html(""), a.each(c.path, function (b, d) {
                 var e = "" == d ? "root" : d, f = a("<li />").data("path", c._pathToString(b + 1)).text(e);
                 c.$elements.breadcrumbs.append(f)
             }));
@@ -131,7 +131,7 @@
                 b._draw(a), b.opts.onLoad.call(b, b)
             })
         }, remove: function () {
-            this.html(""), this.$element.removeData("plugin_" + f), this.$element.removeClass("sfb x32 x22 x16")
+            this.html(""), this.$element.removeData("plugin_" + f), this.$element.removeClass("sfb x42 x32 x22 x16")
         }, getSelected: function () {
             var a = this;
             return a.selected
@@ -165,7 +165,7 @@
         json: null,
         method: "post",
         view: "details",
-        size: "32",
+        size: "42",
         path: "/",
         breadcrumbs: !1,
         select: !0,

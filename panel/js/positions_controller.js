@@ -1,5 +1,6 @@
 // Script that call to and endpoint and panse a json response asynchronously
 var url = 'http://localhost:8080/';
+var path_modal_explorer = '/gcodes';
 
 
 function refresh_positions() {
@@ -64,7 +65,7 @@ function show_alert_success() {
 function generate_file_manager(paths) {
     $("#files").simpleFileBrowser({
         json: paths,
-        path: '/gcodes',
+        path: path_modal_explorer,
         view: 'icon',
         select: false,
         breadcrumbs: true,
@@ -72,6 +73,7 @@ function generate_file_manager(paths) {
             if (type == 'file') {
                 alert("Open file: " + folder + '/' + file);
             }
+            path_modal_explorer = folder;
         }
     });
 }
