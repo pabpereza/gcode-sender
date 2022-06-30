@@ -5,7 +5,7 @@ import logging
 from time import sleep
 import glob
 
-global_dir = '.'
+global_dir = '/home/pi/qr-lector-and-gcode-sender'
 locked = False
 service_name = "gpio-lector"
 
