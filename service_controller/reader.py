@@ -62,7 +62,7 @@ def translatePosition(bin_position):
 
 def sendProgram(index_position):
     print("Enviando programa a puesto: " + str(index_position))
-    os.system("python g_code_sender.py " + "./"+getPath(index_position))
+    os.system("python3 robot_files/ " + getPath(index_position))
 
 
 def programStatus():
