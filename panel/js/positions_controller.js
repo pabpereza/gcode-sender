@@ -1,6 +1,6 @@
 // Script that call to and endpoint and panse a json response asynchronously
 var url = 'http://localhost:8080/';
-var path_modal_explorer = '/gcodes';
+var path_modal_explorer = '/robot_files';
 
 
 function refresh_positions() {
@@ -88,7 +88,7 @@ refresh_positions();
 var gcode_programs = {
     '/': [
         {
-            name: 'gcodes',
+            name: 'robot_files',
             type: 'folder'
         }
     ]
@@ -110,7 +110,7 @@ $.ajax(url + "paths", {
             }
             gcode_programs[path_without_file].push({
                 name: file,
-                type: 'gcode'
+                type: 'py'
             });
 
             // Add dirs
