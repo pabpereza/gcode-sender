@@ -2,7 +2,6 @@ import RPi.GPIO as GPIO  # import RPi.GPIO module
 from time import sleep
 import os
 import requests
-import g_code_sender as sender
 
 ## PIN CONFIGURATION ##
 ## -------------------------------------------------- ##
@@ -32,8 +31,7 @@ with open('gpio_positions') as file:
 ## AUXILAR FUNCTIONS ##
 ## -------------------------------------------------- ##
 def finishProgram():
-    os.system("curl -X GET http://localhost:8080/stop")
-    # UNCOMMENTos.system("systemctl stop gpio-lector")
+    data = requests.get("http://localhost:8080/stop")
     exit(1)
 
 
@@ -81,7 +79,6 @@ def debug():
 ## MAIN LOGIC PROCESS ##
 ## -------------------------------------------------- ##
 last_bin_position = "0000"
-#os.system("python g_code_sender.py ./gcodes/Homing.gcode")
 
 
 try:
@@ -90,8 +87,7 @@ try:
 
         # Comprobar si la seta esta pulsada o el pin auto estan activos
         if not GPIO.input(4) or not GPIO.input(5):
-            debug()
-            finishProgram()
+            print("La seta esta pulsada o el pin auto esta activo") 
         else:
 
             pin1 = GPIO.input(27)
