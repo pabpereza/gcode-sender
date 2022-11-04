@@ -102,14 +102,14 @@ def getPaths():
     '''
     # TODO: modify ./ , use global_dir
     base = global_dir + '/service_controller/'
-    files = glob.glob(base + 'gcodes/**/*.gcode', recursive=True)
+    files = glob.glob(base + 'robot_files/**/*.py', recursive=True)
     files = list(map(lambda x: x.replace(base, ''), files))
     return files
 
 
 def getCodes():
     f = []
-    for (dirpath, dirnames, filenames) in os.walk(global_dir + '/GCodes'):
+    for (dirpath, dirnames, filenames) in os.walk(global_dir + '/service_controller/robot_files'):
         print(dirnames, filenames)
 
     return "OK"
