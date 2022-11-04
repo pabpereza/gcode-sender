@@ -39,7 +39,7 @@ class RobotMain(object):
         self._angle_acc = 500
         self._variables = {}
         self._robot_init()
-	self._arm.set_cartesian_velo_continuous(True)
+        self._arm.set_cartesian_velo_continuous(True)
 
     # Robot init
     def _robot_init(self):
