@@ -104,8 +104,13 @@ class RobotMain(object):
     # Robot Main Run
     def run(self):
         try:
+            self._angle_acc = 500
+            self._angle_speed = 180
             self._tcp_speed = 450
             self._tcp_acc = 2000
+            code = self._arm.set_cgpio_digital(5, 1, delay_sec=0)
+            if not self._check_code(code, 'set_cgpio_digital'):
+                return
             code = self._arm.set_servo_angle(angle=[189.2, 80.2, 85.2, 16.8, -104.5, 169.9], speed=self._angle_speed, mvacc=self._angle_acc, wait=False, radius=0.0)
             if not self._check_code(code, 'set_servo_angle'):
                 return
@@ -180,6 +185,9 @@ class RobotMain(object):
             self._tcp_speed = 500
             code = self._arm.set_servo_angle(angle=[189.2, 80.2, 85.2, 16.8, -104.5, 169.9], speed=self._angle_speed, mvacc=self._angle_acc, wait=False, radius=0.0)
             if not self._check_code(code, 'set_servo_angle'):
+                return
+            code = self._arm.set_cgpio_digital(5, 0, delay_sec=0)
+            if not self._check_code(code, 'set_cgpio_digital'):
                 return
         except Exception as e:
             self.pprint('MainException: {}'.format(e))

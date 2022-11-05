@@ -60,11 +60,11 @@ def translatePosition(bin_position):
 
 def sendProgram(index_position):
     print("Enviando programa a puesto: " + str(index_position))
-    os.system("python3 " + getPath(index_position))
+    os.system("python3 /home/pi/qr-lector-and-gcode-sender/service_controller" + getPath(index_position))
 
 def reset():
     print("Reseteando puesto")
-    os.system("python3 /robot_files/homing.py")
+    os.system("python3 /home/pi/qr-lector-and-gcode-sender/robot_files/homing.py")
 
 
 def programStatus():
