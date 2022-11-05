@@ -60,7 +60,11 @@ def translatePosition(bin_position):
 
 def sendProgram(index_position):
     print("Enviando programa a puesto: " + str(index_position))
-    os.system("python3 /home/pi/qr-lector-and-gcode-sender/service_controller/robot_files/ " + getPath(index_position))
+    os.system("python3 " + getPath(index_position))
+
+def reset():
+    print("Reseteando puesto")
+    os.system("python3 /robot_files/homing.py")
 
 
 def programStatus():
@@ -88,8 +92,10 @@ try:
         # Comprobar si la seta esta pulsada o el pin auto estan activos
         if not GPIO.input(4):
             print("La seta esta pulsada ") 
+            reset()
         elif not GPIO.input(5):
             print("Modo auto")
+            reset()
         else:
 
             pin1 = GPIO.input(27)
