@@ -1,3 +1,17 @@
 *.jpg
 *.swp
 *.pyc
+*.pyo
+*.orig
+*.cpython-36.pyc
+*.cpython-36.pyo
+*.cpython-37.pyc
+*.cpython-37.pyo
+*.cpython-38.pyc
+*.cpython-38.pyo
+*.cpython-39.pyc
+*.cpython-39.pyo
+*.cpython-310.pyc
+*.cpython-310.pyo
+*.so
+*.log
