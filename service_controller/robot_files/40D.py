@@ -39,7 +39,6 @@ class RobotMain(object):
         self._angle_acc = 500
         self._variables = {}
         self._robot_init()
-        self._arm.set_cartesian_velo_continuous(True)
 
     # Robot init
     def _robot_init(self):
@@ -105,86 +104,89 @@ class RobotMain(object):
     def run(self):
         try:
             self._angle_acc = 500
-            self._angle_speed = 180
-            self._tcp_speed = 450
-            self._tcp_acc = 2000
+            self._angle_speed = 120
             code = self._arm.set_cgpio_digital(5, 1, delay_sec=0)
             if not self._check_code(code, 'set_cgpio_digital'):
                 return
             code = self._arm.set_servo_angle(angle=[189.2, 80.2, 85.2, 16.8, -104.5, 169.9], speed=self._angle_speed, mvacc=self._angle_acc, wait=False, radius=0.0)
             if not self._check_code(code, 'set_servo_angle'):
                 return
-            code = self._arm.set_position(*[0.0, -34.0, 15.0, 180.0, 15.0, 83.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
-            if not self._check_code(code, 'set_position'):
+            code = self._arm.set_cgpio_digital(2, 1, delay_sec=0)
+            if not self._check_code(code, 'set_cgpio_digital'):
                 return
-            self._tcp_speed = 150
+            code = self._arm.set_servo_angle(angle=[139.2, -1.7, 94.8, -5.6, -70.3, 52.4], speed=self._angle_speed, mvacc=self._angle_acc, wait=False, radius=0.0)
+            if not self._check_code(code, 'set_servo_angle'):
+                return
+            self._tcp_speed = 100
             code = self._arm.set_cgpio_digital(1, 1, delay_sec=0)
             if not self._check_code(code, 'set_cgpio_digital'):
                 return
-            code = self._arm.set_position(*[51.0, -19.0, 15.0, 180.0, 15.0, 125.8], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[46.5, -8.6, -14.8, -176.7, 12.9, 128.8], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[81.0, 21.9, 15.2, 180.0, 15.0, 158.8], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[68.6, 24.6, -15.5, -173.2, 9.3, 167.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            self._tcp_speed = 75
-            code = self._arm.set_position(*[87.0, 73.0, 11.0, 180.0, 15.0, 170.1], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[76.1, 77.6, -12.5, -177.2, 11.3, 177.9], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[95.0, 121.0, 13.4, 180.0, 15.0, 157.6], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[79.1, 119.7, -15.2, -176.1, 10.3, 169.3], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[111.0, 170.0, 11.0, 180.0, 15.0, 167.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[95.0, 166.0, -14.9, -177.5, 11.1, 170.4], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[115.0, 236.8, 9.0, 180.0, 15.0, -171.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[102.4, 224.6, -16.3, -175.7, 9.8, -171.7], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            self._tcp_speed = 150
-            code = self._arm.set_position(*[108.0, 270.0, 7.7, 180.0, 15.0, -160.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[97.9, 258.0, -19.9, -174.2, 10.1, -159.8], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[85.2, 305.0, 3.0, 180.0, 15.0, -136.4], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[76.5, 295.4, -25.6, -174.7, 7.1, -130.3], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[44.5, 330.0, 2.0, 180.0, 15.0, -101.7], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[46.3, 306.1, -30.1, -178.4, 4.3, -99.7], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[-0.6, 317.5, 0.3, 180.0, 15.0, -61.1], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[1.8, 298.4, -28.9, 176.5, 6.2, -59.6], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[-29.0, 289.0, 6.0, 180.0, 15.0, -35.6], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[-24.1, 261.9, -25.7, 171.8, 7.0, -30.4], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[-51.0, 246.7, 10.0, 180.0, 15.0, -19.8], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[-43.2, 225.2, -12.7, 174.4, 12.8, -14.3], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            self._tcp_speed = 75
-            code = self._arm.set_position(*[-63.0, 197.4, 12.0, 180.0, 15.0, -6.4], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[-49.6, 178.8, -10.8, 174.9, 15.6, -6.7], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[-61.0, 145.2, 14.0, 180.0, 15.0, -3.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[-49.1, 137.7, -11.0, 179.8, 16.2, -1.3], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[-59.0, 94.0, 14.0, 180.0, 15.0, -13.2], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[-48.3, 78.8, -13.0, 177.6, 12.8, -3.8], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[-62.0, 45.2, 12.0, 180.0, 15.0, -3.8], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[-48.9, 38.9, -11.9, 175.9, 13.0, 1.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            self._tcp_speed = 150
-            code = self._arm.set_position(*[-48.0, -5.6, 14.0, 180.0, 15.0, 31.4], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[-33.0, 0.7, -12.2, 176.8, 14.2, 34.2], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
-            code = self._arm.set_position(*[-3.2, -35.0, 13.0, 180.0, 15.0, 80.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
+            code = self._arm.set_position(*[5.8, -20.9, -11.9, 179.2, 15.7, 81.0], speed=self._tcp_speed, mvacc=self._tcp_acc, radius=0.0, wait=False)
             if not self._check_code(code, 'set_position'):
                 return
             code = self._arm.set_cgpio_digital(1, 0, delay_sec=0)
             if not self._check_code(code, 'set_cgpio_digital'):
                 return
-            self._tcp_speed = 500
+            self._angle_speed = 150
+            code = self._arm.set_servo_angle(angle=[139.2, -4.3, 92.1, -6.2, -67.8, -302.1], speed=self._angle_speed, mvacc=self._angle_acc, wait=False, radius=0.0)
+            if not self._check_code(code, 'set_servo_angle'):
+                return
             code = self._arm.set_servo_angle(angle=[189.2, 80.2, 85.2, 16.8, -104.5, 169.9], speed=self._angle_speed, mvacc=self._angle_acc, wait=False, radius=0.0)
             if not self._check_code(code, 'set_servo_angle'):
+                return
+            code = self._arm.set_cgpio_digital(2, 0, delay_sec=0)
+            if not self._check_code(code, 'set_cgpio_digital'):
                 return
             code = self._arm.set_cgpio_digital(5, 0, delay_sec=0)
             if not self._check_code(code, 'set_cgpio_digital'):

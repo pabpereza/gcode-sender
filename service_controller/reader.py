@@ -64,7 +64,7 @@ def sendProgram(index_position):
 
 def reset():
     print("Reseteando puesto")
-    os.system("python3 /home/pi/qr-lector-and-gcode-sender/robot_files/homing.py")
+    os.system("python3 /home/pi/qr-lector-and-gcode-sender/service_controller/robot_files/homing.py")
 
 
 def programStatus():

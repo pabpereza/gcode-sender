@@ -103,15 +103,18 @@ class RobotMain(object):
     # Robot Main Run
     def run(self):
         try:
-            self._angle_acc = 500
-            self._angle_speed = 180
-            self._tcp_speed = 450
-            self._tcp_acc = 1000
+            self._angle_acc = 200
+            self._angle_speed = 100
+            self._tcp_speed = 200
+            self._tcp_acc = 500
             code = self._arm.set_cgpio_digital(1, 0, delay_sec=0)
             if not self._check_code(code, 'set_cgpio_digital'):
                 return
             code = self._arm.set_cgpio_digital(5, 1, delay_sec=0)
             if not self._check_code(code, 'set_cgpio_digital'):
+                return
+            code = self._arm.set_position(z=50, radius=0, speed=self._tcp_speed, mvacc=self._tcp_acc, relative=True, wait=False)
+            if not self._check_code(code, 'set_position'):
                 return
             code = self._arm.set_servo_angle(angle=[189.2, 80.2, 85.2, 16.8, -104.5, 169.9], speed=self._angle_speed, mvacc=self._angle_acc, wait=False, radius=0.0)
             if not self._check_code(code, 'set_servo_angle'):
