@@ -6,11 +6,15 @@ import requests
 ## PIN CONFIGURATION ##
 ## -------------------------------------------------- ##
 GPIO.setmode(GPIO.BCM)  # choose BCM or BOARD
-# Pin control
+
+# Pin control posicion puesto
 GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(25, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+
+# Pin control puesto bajo
+GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Services status
 # Auto in
@@ -62,6 +66,7 @@ def sendProgram(index_position):
     print("Enviando programa a puesto: " + str(index_position))
     os.system("python3 /home/pi/qr-lector-and-gcode-sender/service_controller" + getPath(index_position))
 
+
 def reset():
     print("Reseteando puesto")
     os.system("python3 /home/pi/qr-lector-and-gcode-sender/service_controller/robot_files/homing.py")
@@ -95,6 +100,9 @@ try:
             reset()
         elif not GPIO.input(5):
             print("Modo auto")
+            reset()
+        elif not GPIO.input(13):
+            print("Puesto bajado")
             reset()
         else:
 
