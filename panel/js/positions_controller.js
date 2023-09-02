@@ -32,6 +32,14 @@ function refresh_positions() {
 
     });
 
+    $.getJSON(url + 'lockstatus', {get_param: 'value'}, function (json) {
+
+        if (json['locked'])(
+            alert("Modo automático activado. Interfaz bloqueada")
+        )
+
+    });
+
 }
 
 

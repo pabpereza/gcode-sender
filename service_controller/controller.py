@@ -14,13 +14,19 @@ logging.basicConfig(filename='app.log', filemode='w', format='%(asctime)s - %(na
 def lockInterface():
     global locked
     locked = True
-    return 'locked'
+    return '{ "locked": True }'
 
 def unlockInterface():
     global locked
     locked = False
-    return 'unlocked'
+    return '{ "locked": False }'
 
+def lockStatus():
+    global locked
+    if locked:
+        return '{ "locked": true }'
+    else:
+        return '{ "locked": false }'
 
 def setGlobalDir(direction):
     global global_dir

@@ -1,2 +1,8 @@
-2023-09-02 12:43:36,684 - werkzeug - WARNING -  * Debugger is active!
-2023-09-02 12:43:36,689 - werkzeug - INFO -  * Debugger PIN: 321-971-825
+2023-09-02 13:08:14,129 - werkzeug - WARNING -  * Debugger is active!
+2023-09-02 13:08:14,134 - werkzeug - INFO -  * Debugger PIN: 321-971-825
+2023-09-02 13:08:17,979 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2023 13:08:17] "GET /lockstatus HTTP/1.1" 200 -
+2023-09-02 13:08:23,719 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2023 13:08:23] "GET / HTTP/1.1" 200 -
+2023-09-02 13:08:23,733 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2023 13:08:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2023-09-02 13:08:26,669 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2023 13:08:26] "GET / HTTP/1.1" 200 -
+2023-09-02 13:08:28,943 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2023 13:08:28] "GET / HTTP/1.1" 200 -
+2023-09-02 13:08:36,796 - werkzeug - INFO - 127.0.0.1 - - [02/Sep/2023 13:08:36] "GET / HTTP/1.1" 200 -
