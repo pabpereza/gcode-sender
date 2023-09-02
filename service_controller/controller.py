@@ -11,6 +11,14 @@ service_name = "gpio-lector"
 
 logging.basicConfig(filename='app.log', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
+def lockInterface():
+    locked = True
+    return 'locked'
+
+def unlockInterface():
+    locked = False
+    return 'unlocked'
+
 
 def setGlobalDir(direction):
     global global_dir
@@ -65,19 +73,22 @@ def getPositions():
 
 
 def setPosition(position):
-    json_file = open(global_dir + '/service_controller/positions.json')
-    data = json.load(json_file)
-    json_file.close()
 
-    data[position - 1]['active'] = not data[position - 1]['active']
+    if not locked:
 
-    if not data == "":
-        json_file = open(global_dir + '/service_controller/positions.json', 'w')
-        json.dump(data, json_file)
+        json_file = open(global_dir + '/service_controller/positions.json')
+        data = json.load(json_file)
         json_file.close()
-        return "OK"
 
-    return "ERROR"
+        data[position - 1]['active'] = not data[position - 1]['active']
+
+        if not data == "":
+            json_file = open(global_dir + '/service_controller/positions.json', 'w')
+            json.dump(data, json_file)
+            json_file.close()
+            return "OK"
+
+        return "ERROR"
 
 
 def updatePositionPath(position, path):

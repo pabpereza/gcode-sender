@@ -67,6 +67,12 @@ def sendProgram(index_position):
     os.system("python3 /home/pi/qr-lector-and-gcode-sender/service_controller" + getPath(index_position))
 
 
+def lockInterface():
+    requests.get("http://localhost:8080/lock")
+
+def unlockInterface():
+    requests.get("http://localhost:8080/unlock")
+
 def reset():
     print("Reseteando puesto")
     os.system("python3 /home/pi/qr-lector-and-gcode-sender/service_controller/robot_files/homing.py")
@@ -93,19 +99,20 @@ last_bin_position = "0000"
 try:
     while True:
 
-
         # Comprobar si la seta esta pulsada o el pin auto estan activos
         if not GPIO.input(4):
             print("La seta esta pulsada ") 
             reset()
         elif not GPIO.input(5):
-            print("Modo auto")
+            print("Modo auto desactivado")
+            unlockInterface()
             reset()
         elif not GPIO.input(13):
             print("Puesto bajado")
             reset()
         else:
-
+            lockInterface()
+            
             pin1 = GPIO.input(27)
             pin2 = GPIO.input(22)
             pin3 = GPIO.input(25)

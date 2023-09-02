@@ -44,6 +44,18 @@ def status():
     return jsonify({'msg': controller.status()})
 
 
+############
+# Lock interface
+@app.route('/lock')
+def lock():
+    return jsonify({'msg': controller.lockInterface()})
+
+@app.route('/unlock')
+def unlock():
+    return jsonify({'msg': controller.unlockInterface()})
+
+
+
 @app.route('/getcodes/')
 def getcode():
     return controller.getCodes()
