@@ -12,10 +12,12 @@ service_name = "gpio-lector"
 logging.basicConfig(filename='app.log', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 def lockInterface():
+    global locked
     locked = True
     return 'locked'
 
 def unlockInterface():
+    global locked
     locked = False
     return 'unlocked'
 
@@ -73,7 +75,7 @@ def getPositions():
 
 
 def setPosition(position):
-
+    global locked
     if not locked:
 
         json_file = open(global_dir + '/service_controller/positions.json')

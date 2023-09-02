@@ -68,10 +68,12 @@ def sendProgram(index_position):
 
 
 def lockInterface():
-    requests.get("http://localhost:8080/lock")
+    data = requests.get("http://localhost:8080/lock")
+    print(data)
 
 def unlockInterface():
-    requests.get("http://localhost:8080/unlock")
+    data = requests.get("http://localhost:8080/unlock")
+    print(data)
 
 def reset():
     print("Reseteando puesto")
@@ -112,7 +114,7 @@ try:
             reset()
         else:
             lockInterface()
-            
+
             pin1 = GPIO.input(27)
             pin2 = GPIO.input(22)
             pin3 = GPIO.input(25)
